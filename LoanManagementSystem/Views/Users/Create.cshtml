@@ -1,0 +1,107 @@
+﻿@model LoanManagementSystem.Models.User
+
+@{
+    ViewData["Title"] = "Create";
+}
+<body style="overflow:hidden"> 
+<h4 style="padding-left:250px;padding-top:25px"><u>Add New User</u></h4>
+
+
+
+<div class="row" style="padding-left:250px;padding-top:25px">
+    <div class="col-md-12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div >
+                
+                <input asp-for="Id" type="hidden" />
+                
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <b> <label asp-for="firstName" class="control-label"></label><span style="color:red;">*</span></b>
+                        <input asp-for="firstName" class="form-control" placeholder="Enter your First Name here"/>
+                        <span asp-validation-for="firstName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <b><label asp-for="lastName" class="control-label"></label> <span style="color:red;">*</span></b>
+                        <input asp-for="lastName" class="form-control" placeholder="Enter your Last Name here" />
+                        <span asp-validation-for="lastName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <b>  <label asp-for="userName" class="control-label"></label><span style="color:red;">*</span></b>
+                        <input asp-for="userName" class="form-control" placeholder="Enter your User Name here" />
+                        <span asp-validation-for="userName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <b><label asp-for="passWord" class="control-label"></label><span style="color:red;">*</span> </b>
+                        <input type="password" asp-for="passWord" class="form-control" placeholder="Enter Password here" />
+                        <span asp-validation-for="passWord" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <b><label asp-for="emailID" class="control-label"></label><span style="color:red;">*</span> </b>
+                        <input asp-for="emailID" class="form-control" placeholder="Enter your Email ID here" />
+                        <span asp-validation-for="emailID" class="text-danger"></span>
+                    </div>
+                </div>
+            
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                        <b> <label asp-for="roleId" class="control-label"></label><span style="color:red;">*</span> </b>
+                                <select asp-for="roleId" class="form-control" id="roles" >
+                                    <option value="" > - -Select - - </option>
+                                    <option value="1">Admin</option>
+                                    <option value="2">User</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3" style="padding-top:30px">
+                                <label class="form-check-label">
+                                    <b> @Html.DisplayNameFor(model => model.activeStatus) <span style="color:red;">*</span></b>
+                                    <input class="form-check-input" asp-for="activeStatus" />
+                                </label>
+                         
+                        </div>
+            </div>
+            <div class="row">
+                
+            </div>
+            <br />
+            <div class="form-group">
+               
+                <div class="d-flex flex-row-reverse bd-highlight" style="padding-right:25px">
+                    <input type="submit" value="Save" class="btn btn-success" style="width:100px; margin:10px" />
+                    <a asp-action="Index" class="btn  btn-primary" style="width:100px; margin:10px"> Back </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</body>

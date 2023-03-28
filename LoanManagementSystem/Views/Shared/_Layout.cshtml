@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - LoanManagementSystem</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/LoanManagementSystem.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+          integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body >
+    <header>
+        
+                    
+               
+
+
+        <div class="navbar" style="padding-left:50px;padding-top:10px">
+            <h4> <i class="fa-solid fa-coins"></i>  <b> Loan Management System </b> </h4>
+           <div style="padding-right:50px;">
+                <a asp-controller="Account" asp-action="Logout" style="color:red"><i class="fa fa-sign-out" style="color:red"></i> Sign Out</a>
+           </div> 
+           
+            @*<a href="#"><i class="fa fa-fw fa-search"></i> Search</a>*@
+        </div>
+
+        <div class="sidebar">
+            <div style="padding-top:35px">
+                <a asp-controller="Home" asp-action="Index"><i class="fa-solid fa-house"></i>   Home</a>
+                <a asp-controller="Users" asp-action="Index"><i class="fa fa-user" aria-hidden="true"></i>   Manage User</a>
+                <a asp-controller="LeadPrices" asp-action="Index"> <i class="fa fa-usd" aria-hidden="true"></i>   Manage Lead Price </a>
+                <a asp-controller="ScoreCards" asp-action="Index"><i class ="fa fa-file-text" aria-hidden="true"></i>   Manage Score Card </a>
+          @*  <a asp-area="" asp-controller="Home" asp-action="About"> About </a>*@
+                <a asp-controller="Home" asp-action="Contact"><i class="fa fa-phone" aria-hidden="true"></i>   Contact Us </a>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @*<div class="col-md-6 offset-md-2">*@
+                @RenderBody()
+               @* </div>*@
+          
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

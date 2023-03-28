@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+<body style="background:#cce6ff">
+    <div class="col-md-12"  style="padding-left:300px;padding-top:100px">
+        <h1 style="padding-left:100px"> <u> Loan Management System </u></h1>
+        <br />
+        <h4 style="padding-left:100px;color:red">Enter your Username and Password to login to the application.</h4>
+
+           <br />
+               @* @ViewBag.Message*@
+
+            <form method="post" asp-controller="Account" asp-action="Login">
+          <div style="padding-left:100px">
+
+                <b> User Name<span style="color:red;">*</span>: </b>   <input style="padding-left:25px" type="text" class="form-control" placeholder="Enter your user name here" name="username" />
+                
+                <br />
+                <br />
+
+                <b> Password<span style="color:red;">*</span>: </b>   <input style="padding-left:35px" type="password" class="form-control" placeholder="Enter the password here" name="password" />
+            
+                <br />
+                @ViewBag.Message1
+            <br />
+                <div style="padding-left:180px"> <input type="submit" value="Login" class="btn btn-success" style="width:100px; margin:10px" /></div>
+          </div>
+            </form>
+    </div>
+
+</body>

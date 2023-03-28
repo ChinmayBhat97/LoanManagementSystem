@@ -1,0 +1,39 @@
+﻿@model IEnumerable<LoanManagementSystem.Models.ScoreCard>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+@{
+    ViewData["Title"] = "Scorecard Index";
+}
+
+<body style="overflow:hidden"> 
+<div style="padding-left:250px;padding-top:50px">
+    <h2 style="padding-top:30px; color:#0040ff"> <b><u>Score Cards</u></b></h2>
+        <div style="padding-left:337px; padding-bottom:5px;padding-top:10px">
+            <a asp-action="Create" class="btn  btn-success" style="width:180px"> <i class="fa-solid fa-plus"></i> Add Scorecard</a>
+        </div>
+        <br />
+    <table class="table-bordered" style="width:60%">
+        <thead style="background-color:white;height:35px; text-align: center;font-size:17px;padding-top:5px;padding-bottom:5px">
+        <tr>
+            <th>Score Card Name</th>
+            <th>Actions</th>    
+        </tr>
+    </thead>
+        <tbody style="background-color:white;">
+@foreach (var data in Model) {
+                <tr >
+                    <td style="padding-left:10px; padding-top:10px;padding-bottom:10px">
+                @Html.DisplayFor(modelItem => data.name)
+            </td>
+          
+                    <td style="padding-left:20px;">
+                        
+                        <a asp-action="Details" asp-route-id="@data.scID" class="btn btn-sm btn-info"><i class="fa-solid fa-eye"></i>@*Details*@</a>
+                        <a asp-action="Edit" asp-route-id="@data.scID" class="btn btn-sm btn-warning"><i class="fa-solid fa-pen"></i>@*Edit*@</a>
+                        <a asp-action="Delete" asp-route-id="@data.scID" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash-can"></i>@*Delete*@</a>
+            </td>
+        </tr>
+}
+</tbody>
+</table>
+</div>
+</body>

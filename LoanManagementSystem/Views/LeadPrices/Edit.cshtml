@@ -1,0 +1,79 @@
+﻿@model LoanManagementSystem.Models.LeadPrice
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<body style="overflow:hidden">
+    <h4 style="padding-left:250px;padding-top:25px"><u>Update Lead Price ($) </u></h4>
+<div class="row" style="padding-left:250px;padding-top:50px">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="lpId" />
+
+            <div class="row">
+                <div class="col-md-5"> 
+                    <div class="form-group">
+                            <b>  <label asp-for="ETAA5000" class="control-label"></label><span style="color: red ">*  </span></b>
+                        <input asp-for="ETAA5000" class="form-control" />
+                        <span asp-validation-for="ETAA5000" class="text-danger"></span>
+                    </div>
+                </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                                <b>  <label asp-for="ETAA4000" class="control-label"></label><span style="color: red ">*  </span></b>
+                            <input asp-for="ETAA4000" class="form-control" />
+                            <span asp-validation-for="ETAA4000" class="text-danger"></span>
+                        </div>
+                    </div>
+            </div>
+            <br />
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                                <b> <label asp-for="ETAA3000" class="control-label"></label><span style="color: red ">*  </span> </b>
+                            <input asp-for="ETAA3000" class="form-control" />
+                            <span asp-validation-for="ETAA3000" class="text-danger"></span>
+                        </div>
+                    </div>
+                        <div class="col-md-5"> 
+                            <div class="form-group">
+                                   <b>  <label asp-for="ETAA2000" class="control-label"></label><span style="color: red ">*  </span> </b> 
+                                <input asp-for="ETAA2000" class="form-control" />
+                                <span asp-validation-for="ETAA2000" class="text-danger"></span>
+                            </div>
+                        </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                                <b>   <label asp-for="ETAB1999" class="control-label"></label><span style="color: red ">*  </span> </b>
+                            <input asp-for="ETAB1999" class="form-control" />
+                            <span asp-validation-for="ETAB1999" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <br />
+
+            <div class="form-group">
+                    <div class="d-flex flex-row-reverse bd-highlight" style="padding-right:25px"> 
+                        <a asp-action="Index" class="btn  btn-primary" style="width:100px; margin:10px"> Back </a>
+                        <input type="submit" value="Save" class="btn btn-success" style="width:100px; margin:10px" />
+                        
+                    </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

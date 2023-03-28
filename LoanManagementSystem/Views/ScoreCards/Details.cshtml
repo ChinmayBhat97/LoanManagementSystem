@@ -1,0 +1,80 @@
+﻿@model LoanManagementSystem.Models.ScoreCard
+
+@{
+    ViewData["Title"] = "ScoreCard Details";
+}
+
+<body style="overflow:hidden"> 
+    <h4 style="padding-left:250px;padding-top:25px"><u>Details of Scorecards</u></h4>
+<div style="padding-left:250px;padding-top:20px"> 
+    <div  class="col-md-12">
+                <b>  <label asp-for="name" class="control-label"></label> : </b> @Html.DisplayFor(model => model.name)
+                <br />
+            <div style="padding-top:10px">
+                <b>  <label asp-for="age" class="control-label"></label> : </b> @Html.DisplayFor(model => model.age)
+                <br />
+            </div>
+            <div style="padding-top:10px">
+                <b>  <label asp-for="minIncome" class="control-label"  ></label> : $ </b> @Html.DisplayFor(model => model.minIncome)
+
+                <b>  <label asp-for="maxIncome" class="control-label" style="padding-left:50px"></label> : $ </b> @Html.DisplayFor(model => model.maxIncome)
+            </div>
+                <br />
+            <div class="row">
+                <div class="col-md-6">
+                        <b>  <label asp-for="stateId" class="control-label"></label> : </b> @if (Model.stateId==1)
+                        {
+                            <p  >Arizona</p>
+                        }
+                        else if (Model.stateId==2)
+                        {
+                            <p>California</p>
+                        }
+                        else if (Model.stateId==3)
+                        {
+                            <p>Florida</p>
+                        }
+                        else 
+                        {
+                            <p >User</p>
+                        }
+                </div>
+                <div class="col-md-6">
+                        <b>  <label asp-for="acntId" class="control-label" style="padding-left:50px"></label> : </b> @if (Model.acntId==1)
+                        {
+                            <p>Current</p>
+                        }
+                        else if (Model.acntId==2)
+                        {
+                            <p>Salary</p>
+                        }
+                        else 
+                        {
+                            <p>Savings</p>
+                        }
+                </div>
+
+            </div>
+                <br />
+            <div >
+                <b>  <label asp-for="minLoanamt" class="control-label"></label> : $ </b> @Html.DisplayFor(model => model.minLoanamt)
+
+                <b>  <label asp-for="maxLoanamt" class="control-label" style="padding-left:50px"></label> : $ </b> @Html.DisplayFor(model => model.maxLoanamt)
+            </div>
+                <br />
+            <div >
+                <b>  <label asp-for="routingBlcklst" class="control-label"></label> : </b> @Html.DisplayFor(model => model.routingBlcklst)
+
+                <b>  <label asp-for="zipcodeBlcklst" class="control-label" style="padding-left:50px"></label> : </b> @Html.DisplayFor(model => model.zipcodeBlcklst)
+            </div>
+                <br />
+       
+   
+</div>
+        <div class="d-flex flex-row-reverse bd-highlight" style="padding-right:25px">
+            <a asp-action="Index" class="btn btn-sm btn-info" style="width:100px; margin:10px"> Back to List</a>
+            <a asp-action="Edit" asp-route-id="@Model.scID" class="btn btn-sm btn-warning" style="width:100px; margin:10px">Edit</a>
+
+        </div>
+</div>
+</body>

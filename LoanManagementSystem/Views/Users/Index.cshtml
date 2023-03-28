@@ -1,0 +1,97 @@
+﻿@model IEnumerable<LoanManagementSystem.Models.User>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" 
+integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+crossorigin="anonymous" referrerpolicy="no-referrer" />
+@{
+    ViewData["Title"] = "Index";
+}
+<body style="overflow:hidden"> 
+<h2 style="padding-top:30px;padding-left:50px; text-align:center;color:#0040ff"> <b><u>Registered Users</u></b></h2>
+
+
+<div style="padding-left:225px;">
+    <div style="padding-left:760px; padding-bottom:5px;padding-top:10px" >
+        <a asp-action="Create" class="btn  btn-success" ><i class="fa-solid fa-plus"></i> Add User</a>
+    </div>
+
+  @*  <input type="submit" asp-action="Create" value=" Add New User" class="btn btn-primary" />*@
+    <table class="table-bordered" style="width:100%">
+       
+        <thead style="background-color:white;height:35px; text-align: center;font-size:17px">
+        <tr>
+               
+            <th>
+                @*@Html.DisplayNameFor(model => model.firstName)*@
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                User Name
+            </th>
+           @* <th>
+                @Html.DisplayNameFor(model => model.passWord)
+            </th>*@
+            <th>
+               Email ID
+            </th>
+            <th>
+               Role
+            </th>
+            <th>
+              Status
+            </th>
+            <th>
+                   Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody style="background-color:white;">
+    @foreach (var data in Model)
+    {       
+        <tr >
+            <td style="padding-left:10px"> @Html.DisplayFor(modelItem => data.firstName) </td>
+
+                    <td style="padding-left:10px"> @Html.DisplayFor(modelItem => data.lastName) </td>
+
+                    <td style="padding-left:10px"> @Html.DisplayFor(modelItem => data.userName) </td>
+
+                    <td style="padding-left:10px"> @Html.DisplayFor(modelItem => data.emailID) </td>
+                    
+                    <td style="padding-left:10px;">
+               @* @Html.DisplayFor(modelItem => item.roleId)*@
+                     @if(data.roleId==1)
+                     {
+                            <p style="padding-top:15px;">Admin</p>
+                     }     
+                     else
+                     {
+                            <p style="padding-top:15px;">User</p>
+                     }
+
+            </td>
+                    <td style="padding-left:10px;">
+                @*@Html.DisplayFor(modelItem => item.activeStatus)*@
+                @if(data.activeStatus==true)
+                {
+                            <p style="color:#00b300; font-weight:600;padding-top:15px;">Active</p>
+                }
+                else
+                {
+                            <p style="color:red; font-weight:600;padding-top:15px;">Inactive</p>
+                }
+            </td>
+
+            <td style="padding-left:10px">
+                        <a asp-action="Edit" asp-route-id="@data.Id" class="btn btn-sm btn-warning"><i class="fa-solid fa-pen"></i>@*Edit*@</a>
+                        <a asp-action="Delete" asp-route-id="@data.Id" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash-can"></i>@*Delete*@</a>
+            </td>
+        </tr>
+     }
+    </tbody>
+</table>
+
+</div>
+
+</body>

@@ -1,0 +1,101 @@
+﻿@model IEnumerable<LoanManagementSystem.Models.LeadPrice>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<body style="overflow:hidden;"> 
+<div style="padding-left:300px">
+
+
+    <h2 style="padding-top:30px; text-align:center;color:#0040ff"> <u> Lead Price </u></h2>
+    <p style="color:darkblue">
+        Lead price is the amount to be paid for the middleman or agent as of invoving in the loan lending process. The price varies as per below ranges.
+    </p>
+  @*<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ETAA5000)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ETAA4000)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ETAA3000)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ETAA2000)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ETAB1999)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+  @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ETAA5000)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ETAA4000)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ETAA3000)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ETAA2000)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ETAB1999)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.lpId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.lpId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.lpId">Delete</a>
+            </td>
+        </tr>
+  }
+    </tbody>
+  </table>
+
+   </div>*@
+
+  @*<div style="padding-left:250px;">
+    @using (Html.BeginForm("Edit", "LeadPrices", FormMethod.Post))
+    {
+      
+        <div class="form-group-row">
+            <h5 class="col-md-3 col-form-label" > Greater than or Equal to 5000<span style="color:red">*</span></h5>
+            <a asp-action="Create">Create New</a>
+            <div class="col-sm-2"> 
+                <input type="number" class="form-control" name="etaa5000" value="@">
+            </div>
+
+        </div>
+
+    }
+  </div>*@
+ 
+    
+    @foreach (var item in Model) {
+            <h4 class="col-md-5 col-form-label"> Greater than or Equal to 5000<span style="color: red ">*  </span> <b> :  $  @Html.DisplayFor(modelItem => item.ETAA5000)  </b> </h4>
+
+            <h4 class="col-md-5 col-form-label"> Greater than or Equal to 4000<span style="color: red ">*</span>  <b> :  $  @Html.DisplayFor(modelItem => item.ETAA4000) </b> </h4>
+
+            <h4 class="col-md-5 col-form-label"> Greater than or Equal to 3000<span style="color: red ">*</span> <b>   :  $ @Html.DisplayFor(modelItem => item.ETAA3000) </b></h4>
+
+            <h4 class="col-md-5 col-form-label"> Greater than or Equal to 2000<span style="color: red ">*</span> <b> :  $   @Html.DisplayFor(modelItem => item.ETAA2000) </b></h4>
+
+            <h4 class="col-md-5 col-form-label"> Lesser than or Equal to 1999<span style="color: red ">*</span> <b> :  $  @Html.DisplayFor(modelItem => item.ETAB1999) </b></h4>
+            <br />
+            <div style="padding-top:25px">
+                <a asp-action="Edit" asp-route-id="@item.lpId" class="btn btn-sm btn-warning"> <i class="fa-solid fa-pen"></i> <b>Update Lead Price </b></a>
+            </div>
+
+                }
+    
+<div>
+</body>

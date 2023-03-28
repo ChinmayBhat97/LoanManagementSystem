@@ -1,0 +1,120 @@
+﻿@model LoanManagementSystem.Models.ScoreCard
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<body style="overflow:hidden">
+
+    <h4 style="padding-left:250px;padding-top:25px"><u>Edit Score card</u></h4>
+    <div class="row" style="padding-left:250px;padding-top:25px">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="scID" />
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <b>  <label asp-for="name" class="control-label"></label><span style="color:red;">*</span></b>
+                            <input asp-for="name" class="form-control" />
+                            <span asp-validation-for="name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                           <b> <label asp-for="age" class="control-label"></label><span style="color:red;">*</span></b>
+                            <input asp-for="age" class="form-control" />
+                            <span asp-validation-for="age" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                           <b> <label asp-for="minIncome" class="control-label"></label><span style="color:red;">*</span></b>
+                            <input asp-for="minIncome" class="form-control" />
+                            <span asp-validation-for="minIncome" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                            <div class="form-group">
+                           <b> <label asp-for="maxIncome" class="control-label"></label><span style="color:red;">*</span></b>
+                                <input asp-for="maxIncome" class="form-control" />
+                                <span asp-validation-for="maxIncome" class="text-danger"></span>
+                            </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                           <b> <label asp-for="stateId" class="control-label"></label><span style="color:red;">*</span></b>
+                            <select asp-for="stateId" class="form-control" asp-items="ViewBag.stateId"></select>
+                            <span asp-validation-for="stateId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                           <b> <label asp-for="acntId" class="control-label"></label><span style="color:red;">*</span></b>
+                            <select asp-for="acntId" class="form-control" asp-items="ViewBag.acntId"></select>
+                            <span asp-validation-for="acntId" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                           <b> <label asp-for="minLoanamt" class="control-label"></label><span style="color:red;">*</span></b>
+                            <input asp-for="minLoanamt" class="form-control" />
+                            <span asp-validation-for="minLoanamt" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <b>  <label asp-for="maxLoanamt" class="control-label"></label><span style="color:red;">*</span></b>
+                            <input asp-for="maxLoanamt" class="form-control" />
+                            <span asp-validation-for="maxLoanamt" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                           <b> <label asp-for="routingBlcklst" class="control-label"></label><span style="color:red;">*</span></b>
+                            <input asp-for="routingBlcklst" class="form-control" />
+                            <span asp-validation-for="routingBlcklst" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                           <b> <label asp-for="zipcodeBlcklst" class="control-label"></label><span style="color:red;">*</span></b>
+                            <input asp-for="zipcodeBlcklst" class="form-control" />
+                            <span asp-validation-for="zipcodeBlcklst" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            <div class="form-group">
+                    <div class="d-flex flex-row-reverse bd-highlight" style="padding-right:25px"> 
+                       
+                        <a asp-action="Edit" asp-route-id="@Model.scID" class="btn btn-md btn-success" style="width:100px; margin:10px">Save</a>
+                        <a asp-action="Index" class="btn btn-md btn-info" style="width:120px; margin:10px"> Back to list</a>
+                    @*<input type="submit" value="Save" class="btn btn-primary" style="width:100px; margin:10px" />*@
+                    </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</body>

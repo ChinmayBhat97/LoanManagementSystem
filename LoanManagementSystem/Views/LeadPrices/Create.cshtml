@@ -1,0 +1,55 @@
+﻿@model LoanManagementSystem.Models.LeadPrice
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div style="padding-left:350px">
+<h1>Create</h1>
+
+<h4>LeadPrice</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                    <label asp-for="ETAA5000" class="control-label" value="@Html.DisplayFor(modelItem => Model.ETAA5000)"></label>
+                    <td> </td>
+                <input asp-for="ETAA5000" class="form-control" />
+                <span asp-validation-for="ETAA5000" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ETAA4000" class="control-label"></label>
+                <input asp-for="ETAA4000" class="form-control" />
+                <span asp-validation-for="ETAA4000" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ETAA3000" class="control-label"></label>
+                <input asp-for="ETAA3000" class="form-control" />
+                <span asp-validation-for="ETAA3000" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ETAA2000" class="control-label"></label>
+                <input asp-for="ETAA2000" class="form-control" />
+                <span asp-validation-for="ETAA2000" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ETAB1999" class="control-label"></label>
+                <input asp-for="ETAB1999" class="form-control" />
+                <span asp-validation-for="ETAB1999" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
