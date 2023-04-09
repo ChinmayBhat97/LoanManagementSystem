@@ -10,6 +10,8 @@ using System.Dynamic;
 using NuGet.Packaging.Licenses;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Authorization;
+using ReflectionIT.Mvc.Paging;
+using X.PagedList;
 
 namespace LoanManagementSystem.Controllers
 {
@@ -23,12 +25,17 @@ namespace LoanManagementSystem.Controllers
         }
 
         //  Users index
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
             try
             {
-                var context = _context.Users.ToList();
-                return View(context);
+                var pageNumber = page ?? 1;
+                int pageSize = 4;
+                var onePageofUsers = _context.Users.ToPagedList(pageNumber, pageSize);
+                //var context = _context.Users.ToList();
+                //return View(context);
+                return View(onePageofUsers);
+
             }
             catch (Exception Ex)
             {

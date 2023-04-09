@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LoanManagementSystem.Models;
+using X.PagedList;
 
 namespace LoanManagementSystem.Controllers
 {
@@ -19,12 +20,19 @@ namespace LoanManagementSystem.Controllers
         }
 
         // Index Scorecards
-        public  IActionResult Index()
+        public  IActionResult Index(int? page)
         {
             try
             {
-                var scCards = _context.ScoreCards.ToList();
-                return View(scCards);
+                var pageNumber = page ?? 1;
+                int pageSize = 4;
+                var onePageofCards = _context.ScoreCards.ToPagedList(pageNumber, pageSize);
+                //var context = _context.Users.ToList();
+                //return View(context);
+                return View(onePageofCards);
+
+                //var scCards = _context.ScoreCards.ToList();
+                //return View(scCards);
             }
             catch(Exception Ex)
             {

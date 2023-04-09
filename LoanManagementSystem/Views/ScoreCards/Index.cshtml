@@ -1,4 +1,8 @@
 ﻿@model IEnumerable<LoanManagementSystem.Models.ScoreCard>
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 @{
     ViewData["Title"] = "Scorecard Index";
@@ -38,3 +42,23 @@
 </table>
 </div>
 </body>
+
+<div style="padding-left:920px;padding-top:20px;">
+    @Html.PagedListPager((IPagedList)Model, page =>Url.Action("Index", new {page = page}),
+    new X.PagedList.Mvc.Core.PagedListRenderOptions{
+    //DisplayItemSliceAndTotal = true,
+    ContainerDivClasses = new[] {"navigation"},
+    LiElementClasses = new[] { "page-item"},
+    PageClasses = new[] {"page-link"},
+    }),
+</div>
+
+
+@section Scripts
+    {
+    <script>
+        $(document).ready(function () {
+            $('ul.pagination > li.disabled > a').addclass('page-link');
+        });
+    </script>
+}
