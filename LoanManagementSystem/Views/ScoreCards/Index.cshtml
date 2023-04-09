@@ -5,9 +5,9 @@
 }
 
 <body style="overflow:hidden"> 
-<div style="padding-left:250px;padding-top:50px">
-    <h2 style="padding-top:30px; color:#0040ff"> <b><u>Score Cards</u></b></h2>
-        <div style="padding-left:337px; padding-bottom:5px;padding-top:10px">
+<div style="padding-left:400px;padding-top:20px">
+        <h2 style="padding-left:100px;padding-top:20px; color:#0040ff"> <b><u>Score Cards</u></b></h2>
+        <div style="padding-left:400px; padding-bottom:5px;padding-top:10px">
             <a asp-action="Create" class="btn  btn-success" style="width:180px"> <i class="fa-solid fa-plus"></i> Add Scorecard</a>
         </div>
         <br />
@@ -25,12 +25,13 @@
                 @Html.DisplayFor(modelItem => data.name)
             </td>
           
-                    <td style="padding-left:20px;">
-                        
+                     <td style="padding-left:50px;">
+                      
                         <a asp-action="Details" asp-route-id="@data.scID" class="btn btn-sm btn-info"><i class="fa-solid fa-eye"></i>@*Details*@</a>
                         <a asp-action="Edit" asp-route-id="@data.scID" class="btn btn-sm btn-warning"><i class="fa-solid fa-pen"></i>@*Edit*@</a>
                         <a asp-action="Delete" asp-route-id="@data.scID" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash-can"></i>@*Delete*@</a>
-            </td>
+                     
+                     </td>
         </tr>
 }
 </tbody>

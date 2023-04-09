@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using LoanManagementSystem.Models;
 using System.Dynamic;
 using NuGet.Packaging.Licenses;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LoanManagementSystem.Controllers
 {
@@ -51,21 +53,35 @@ namespace LoanManagementSystem.Controllers
 
         }
 
-        //  Add Users Users
+        //  Add Users 
         [HttpPost]
-        public IActionResult Create([Bind("Id,firstName,lastName,userName,passWord,emailID,roleId,activeStatus")] User user)
+        public IActionResult Create(User user)
         {
             try
             {
-                _context.Add(user);
-                _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
+                var checkEmail = _context.Users.Any(x => x.emailID== user.emailID);
+                if(checkEmail == true)
+                    {
+                    
+                  ViewBag.Message=$"Email {user.emailID} is already in use. Try with different Email-Id ";
+                    return View();
+                }
+                else
+                {
+                    _context.Add(user);
+                    _context.SaveChanges();
+                    return RedirectToAction(nameof(Index));
+                }
             }
             catch (Exception Ex)
             {
                 return View(Ex.Message);
             }
         }
+
+
+      
+
 
         //  Users Edit by Id
         public IActionResult Edit(int? id)
@@ -89,16 +105,23 @@ namespace LoanManagementSystem.Controllers
 
 
         [HttpPost]
-        public IActionResult Edit(int id, [Bind("Id,firstName,lastName,userName,passWord,emailID,roleId,activeStatus")] User user)
+        public IActionResult Edit(int id, User user)
         {
             try
             {
-                _context.Update(user);
-                _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
-                ViewData["roleId"] = new SelectList(_context.Roles, "rId", "rId", user.roleId);
-                return View(user);
-
+                var checkEmail = _context.Users.Any(x => x.emailID== user.emailID);
+                if (checkEmail == true)
+                {
+                    ViewBag.Message=$"Email{user.emailID} is already in use.Try with different Email-Id ";
+                    return View();
+                }
+                else
+                { 
+                    _context.Update(user);
+                    _context.SaveChanges();
+                    return RedirectToAction(nameof(Index));
+                   
+                }
             }
             catch (Exception Ex)
             {

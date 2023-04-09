@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -17,6 +18,7 @@ namespace LoanManagementSystem.Models
         [DisplayName("Password")]
         public string passWord { get; set; }
         [DisplayName("Email ID")]
+        //[Remote(action: "IsEmailExist", controller:"Users", ErrorMessage = "EmailId already exists.")]
         public string emailID { get; set; }
         [DisplayName("Role")]
         public virtual int roleId { get; set; }

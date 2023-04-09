@@ -64,14 +64,22 @@ namespace LoanManagementSystem.Controllers
 
        // To Add new score card
         [HttpPost]
-        public IActionResult Create([Bind("scID,name,age,minIncome,maxIncome,stateId,acntId,minLoanamt,maxLoanamt,routingBlcklst,zipcodeBlcklst")] ScoreCard scoreCard)
+        public IActionResult Create(ScoreCard scoreCard)
         {
             try
             {
-                _context.Add(scoreCard);
-                _context.SaveChanges();
-               return RedirectToAction(nameof(Index));
-
+                var checkScoreCard = _context.ScoreCards.Any(x => x.name== scoreCard.name);
+                if (checkScoreCard==true)
+                {
+                    ViewBag.Message=$"Scorecard {scoreCard.name} is already in exists.";
+                    return View();
+                }
+                else
+                {
+                    _context.Add(scoreCard);
+                    _context.SaveChanges();
+                    return RedirectToAction(nameof(Index));
+                }
             }
             catch (Exception Ex)
             {
@@ -87,8 +95,8 @@ namespace LoanManagementSystem.Controllers
             {
                 var scoreCard =  _context.ScoreCards.Find(id);
 
-                ViewData["acntId"] = new SelectList(_context.Accounts, "aID", "aID", scoreCard.acntId);
-                ViewData["stateId"] = new SelectList(_context.States, "sID", "sID", scoreCard.stateId);
+               // ViewData["acntId"] = new SelectList(_context.Accounts, "aID", "aID", scoreCard.acntId);
+              //  ViewData["stateId"] = new SelectList(_context.States, "sID", "sID", scoreCard.stateId);
                 return View(scoreCard);
             }
             catch(Exception Ex)
@@ -99,16 +107,22 @@ namespace LoanManagementSystem.Controllers
 
         // POST  ScoreCards to Edit by
         [HttpPost]
-        public IActionResult Edit(int id, [Bind("scID,name,age,minIncome,maxIncome,stateId,acntId,minLoanamt,maxLoanamt,routingBlcklst,zipcodeBlcklst")] ScoreCard scoreCard)
+        public IActionResult Edit(int id, ScoreCard scoreCard)
         {
             try
             {
-                _context.Update(scoreCard);
-                _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
-                ViewData["acntId"] = new SelectList(_context.Accounts, "aID", "aID", scoreCard.acntId);
-                ViewData["stateId"] = new SelectList(_context.States, "sID", "sID", scoreCard.stateId);
-                return View(scoreCard);
+                var checkScoreCard = _context.ScoreCards.Any(x => x.name== scoreCard.name);
+                if (checkScoreCard == true)
+                {
+                    ViewBag.Message=$"Scorecard {scoreCard.name} is already in exists.";
+                    return View();
+                }
+                else
+                {
+                    _context.Update(scoreCard);
+                    _context.SaveChanges();
+                    return RedirectToAction(nameof(Index));
+                }
             }
             catch (Exception Ex)
             {

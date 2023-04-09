@@ -6,7 +6,7 @@
 <body style="overflow:hidden"> 
 <h4 style="padding-left:250px;padding-top:25px"><u>Add New User</u></h4>
 
-
+    
 
 <div class="row" style="padding-left:250px;padding-top:25px">
     <div class="col-md-12">
@@ -59,18 +59,21 @@
                         <b><label asp-for="emailID" class="control-label"></label><span style="color:red;">*</span> </b>
                         <input asp-for="emailID" class="form-control" placeholder="Enter your Email ID here" />
                         <span asp-validation-for="emailID" class="text-danger"></span>
-                    </div>
+                            <p style="padding-left:5px;color:red;"> @ViewBag.Message </p>
+                        </div>
+                       
                 </div>
             
 
                         <div class="col-md-3">
                             <div class="form-group">
-                        <b> <label asp-for="roleId" class="control-label"></label><span style="color:red;">*</span> </b>
-                                <select asp-for="roleId" class="form-control" id="roles" >
-                                    <option value="" > - -Select - - </option>
-                                    <option value="1">Admin</option>
-                                    <option value="2">User</option>
-                                </select>
+                              <b> <label asp-for="roleId" class="control-label"></label><span style="color:red;">*</span> </b>
+                                    <select asp-for="roleId" class="form-control" id="roles" >
+                                            <option value="" > - -Select - - </option>
+                                            <option value="1">Admin</option>
+                                            <option value="2">User</option>
+                                    </select>
+                              <span asp-validation-for="roleId" class="text-danger">  </span>
                             </div>
                         </div>
 
@@ -104,4 +107,6 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+    
 </body>

@@ -37,6 +37,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Account}/{action=LoginPage}/{id?}");
+    pattern: "{controller=Home}/{action=HomePage}/{id?}");
 
 app.Run();

@@ -6,7 +6,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
     ViewData["Title"] = "Index";
 }
 <body style="overflow:hidden"> 
-<h2 style="padding-top:30px;padding-left:50px; text-align:center;color:#0040ff"> <b><u>Registered Users</u></b></h2>
+<h2 style="padding-top:15px;padding-left:50px; text-align:center;color:#0040ff"> <b><u>Registered Users</u></b></h2>
 
 
 <div style="padding-left:225px;">
@@ -83,7 +83,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                 }
             </td>
 
-            <td style="padding-left:10px">
+            <td style="padding-left:20px">
                         <a asp-action="Edit" asp-route-id="@data.Id" class="btn btn-sm btn-warning"><i class="fa-solid fa-pen"></i>@*Edit*@</a>
                         <a asp-action="Delete" asp-route-id="@data.Id" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash-can"></i>@*Delete*@</a>
             </td>

@@ -37,7 +37,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <b><label asp-for="passWord" class="control-label"></label><span style="color:red;">*</span> </b>
-                        <input  asp-for="passWord" class="form-control" />
+                            <input type="password" asp-for="passWord" class="form-control" />
                         <span asp-validation-for="passWord" class="text-danger"></span>
                     </div>
                 </div>
@@ -49,12 +49,17 @@
                         <b> <label asp-for="emailID" class="control-label"></label><span style="color:red;">*</span></b>
                         <input asp-for="emailID" class="form-control" />
                         <span asp-validation-for="emailID" class="text-danger"></span>
+                            <p style="padding-left:5px;color:red;"> @ViewBag.Message </p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <b><label asp-for="roleId" class="control-label"></label><span style="color:red;">*</span> </b>
-                            <select asp-for="roleId" class="form-control" asp-items="ViewBag.roleId"></select>
+                            <select asp-for="roleId" class="form-control" id="roles">
+                                <option value=""> - -Select - - </option>
+                                <option value="1">Admin</option>
+                                <option value="2">User</option>
+                            </select>
                         <span asp-validation-for="roleId" class="text-danger"></span>
                     </div>
                 </div>

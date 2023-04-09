@@ -10,98 +10,110 @@
     <div class="row" style="padding-left:250px;padding-top:25px">
     <div class="col-md-12">
         <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="scID" />
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                           <b>  <label asp-for="name" class="control-label"></label><span style="color:red;">*</span></b>
                             <input asp-for="name" class="form-control" />
                             <span asp-validation-for="name" class="text-danger"></span>
+                          
                         </div>
+                        <p><span style="color:red;"> @ViewBag.Message</span></p>
                     </div>
-                    <div class="col-md-6">
+                   
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">
                         <div class="form-group">
-                           <b> <label asp-for="age" class="control-label"></label><span style="color:red;">*</span></b>
-                            <input asp-for="age" class="form-control" />
+                            <b> <label asp-for="age" class="control-label"></label><span style="color:red;">*</span></b>
+                            <input asp-for="age" class="form-control" type="number" min="18" max="99"  />
                             <span asp-validation-for="age" class="text-danger"></span>
                         </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <div class="form-group">
-                           <b> <label asp-for="minIncome" class="control-label"></label><span style="color:red;">*</span></b>
-                            <input asp-for="minIncome" class="form-control" />
-                            <span asp-validation-for="minIncome" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                            <div class="form-group">
-                           <b> <label asp-for="maxIncome" class="control-label"></label><span style="color:red;">*</span></b>
-                                <input asp-for="maxIncome" class="form-control" />
-                                <span asp-validation-for="maxIncome" class="text-danger"></span>
-                            </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                           <b> <label asp-for="stateId" class="control-label"></label><span style="color:red;">*</span></b>
-                            <select asp-for="stateId" class="form-control" asp-items="ViewBag.stateId"></select>
+                            <b> <label asp-for="stateId" class="control-label"></label><span style="color:red;">*</span></b>
+                            <select asp-for="stateId" class="form-control" id="states">
+                                <option value="">- -Select - -</option>
+                                <option value="1">Arizona</option>
+                                <option value="2">California</option>
+                                <option value="3">Florida</option>
+                                <option value="4">Texas</option>
+                            </select>
                             <span asp-validation-for="stateId" class="text-danger"></span>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <div class="form-group">
-                           <b> <label asp-for="acntId" class="control-label"></label><span style="color:red;">*</span></b>
-                            <select asp-for="acntId" class="form-control" asp-items="ViewBag.acntId"></select>
+                            <b> <label asp-for="acntId" class="control-label"></label><span style="color:red;">*</span></b>
+                            <select asp-for="acntId" class="form-control" id="acunt">
+                                <option value="">- -Select - -</option>
+                                <option value="1">Current</option>
+                                <option value="2">Salary</option>
+                                <option value="3">Savings</option>
+                            </select>
                             <span asp-validation-for="acntId" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <b> <label asp-for="minIncome" class="control-label"></label><span style="color:red;">*</span></b>
+                            <input asp-for="minIncome" class="form-control" type="number" min="50" max="25000"  />
+                            <span asp-validation-for="minIncome" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <b> <label asp-for="maxIncome" class="control-label"></label><span style="color:red;">*</span></b>
+                            <input asp-for="maxIncome" class="form-control" type="number" min="50" max="25000"  />
+                            <span asp-validation-for="maxIncome" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                            <b> <label asp-for="minLoanamt" class="control-label"></label><span style="color:red;">*</span></b>
-                            <input asp-for="minLoanamt" class="form-control" />
+                            <input asp-for="minLoanamt" class="form-control" type="number" min="50" max="25000"  />
                             <span asp-validation-for="minLoanamt" class="text-danger"></span>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                           <b>  <label asp-for="maxLoanamt" class="control-label"></label><span style="color:red;">*</span></b>
-                            <input asp-for="maxLoanamt" class="form-control" />
+                            <input asp-for="maxLoanamt" class="form-control" type="number" min="50" max="25000"  />
                             <span asp-validation-for="maxLoanamt" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
-                           <b> <label asp-for="routingBlcklst" class="control-label"></label><span style="color:red;">*</span></b>
-                            <input asp-for="routingBlcklst" class="form-control" />
-                            <span asp-validation-for="routingBlcklst" class="text-danger"></span>
+                           <b> <label asp-for="routingBlcklst" class="control-label"></label></b>
+                            <input asp-for="routingBlcklst" class="form-control"  placeholder="Enter Routing Blacklist here" />
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
-                           <b> <label asp-for="zipcodeBlcklst" class="control-label"></label><span style="color:red;">*</span></b>
-                            <input asp-for="zipcodeBlcklst" class="form-control" />
-                            <span asp-validation-for="zipcodeBlcklst" class="text-danger"></span>
+                           <b> <label asp-for="zipcodeBlcklst" class="control-label"></label></b>
+                            <input asp-for="zipcodeBlcklst" class="form-control"  placeholder="Enter Zipcode Blacklist here" />
                         </div>
                     </div>
                 </div>
             <div class="form-group">
-                    <div class="d-flex flex-row-reverse bd-highlight" style="padding-right:25px"> 
-                       
-                        <a asp-action="Edit" asp-route-id="@Model.scID" class="btn btn-md btn-success" style="width:100px; margin:10px">Save</a>
+                    <div class="d-flex flex-row-reverse bd-highlight" style="padding-right:25px">
+                        <input type="submit" value="Save" class="btn btn-success" style="width:120px; margin:10px" />
                         <a asp-action="Index" class="btn btn-md btn-info" style="width:120px; margin:10px"> Back to list</a>
                     @*<input type="submit" value="Save" class="btn btn-primary" style="width:100px; margin:10px" />*@
                     </div>
