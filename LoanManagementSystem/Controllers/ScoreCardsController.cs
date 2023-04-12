@@ -84,9 +84,26 @@ namespace LoanManagementSystem.Controllers
                 }
                 else
                 {
-                    _context.Add(scoreCard);
-                    _context.SaveChanges();
-                    return RedirectToAction(nameof(Index));
+                    if (scoreCard.minIncome>scoreCard.maxIncome)
+                    {
+                        ViewBag.incomeMsg="Minimum Income amount can't be greater than Maximum Income amount.Please enter valid amount to proceed";
+                        return View();
+                    }
+                    else
+                    {
+                        if(scoreCard.minLoanamt>scoreCard.maxLoanamt) 
+                        {
+                            ViewBag.loanMsg="Minimum Loan amount can't be greater than Maximum Loan amount.Please enter valid amount to proceed";
+                            return View();
+                        }
+                        else
+                        {
+                            _context.Add(scoreCard);
+                            _context.SaveChanges();
+                            return RedirectToAction(nameof(Index));
+                        }
+                       
+                    } 
                 }
             }
             catch (Exception Ex)
@@ -127,9 +144,28 @@ namespace LoanManagementSystem.Controllers
                 }
                 else
                 {
-                    _context.Update(scoreCard);
-                    _context.SaveChanges();
-                    return RedirectToAction(nameof(Index));
+                    if (scoreCard.minIncome>scoreCard.maxIncome)
+                    {
+                        ViewBag.incomeMsg="Minimum Income amount can't be greater than Maximum Income amount.Please enter valid amount to proceed";
+                        return View();
+                    }
+                    else
+                    {
+                        if (scoreCard.minLoanamt>scoreCard.maxLoanamt)
+                        {
+                            ViewBag.loanMsg="Minimum Loan amount can't be greater than Maximum Loan amount.Please enter valid amount to proceed";
+                            return View();
+                        }
+                        else
+                        {
+               
+                            _context.Update(scoreCard);
+                            _context.SaveChanges();
+                            return RedirectToAction(nameof(Index));
+                        }
+                        
+                    }
+                    
                 }
             }
             catch (Exception Ex)
