@@ -41,6 +41,7 @@
                         <b>  <label asp-for="userName" class="control-label"></label><span style="color:red;">*</span></b>
                         <input asp-for="userName" class="form-control" placeholder="Enter your User Name here" />
                         <span asp-validation-for="userName" class="text-danger"></span>
+                            <p style="padding-left:5px;color:red;"> @ViewBag.userName </p>
                     </div>
                 </div>
 

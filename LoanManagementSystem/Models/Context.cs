@@ -26,5 +26,11 @@ namespace LoanManagementSystem.Models
         public DbSet<Accounts> Accounts { get; set; }
 
         public DbSet<LeadPrice> LeadPrices { get; set; }
+
+        public DbSet<Waterfall> Waterfalls { get; set;}
+
+        public DbSet<ServicesforWaterfall> servicesforWaterfalls { get; set; }
+
+        public DbSet<WaterfallService> WaterfallServices { get; set; }
     }
 }

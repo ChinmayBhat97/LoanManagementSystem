@@ -66,18 +66,27 @@ namespace LoanManagementSystem.Controllers
         {
             try
             {
-                var checkEmail = _context.Users.Any(x => x.emailID== user.emailID);
-                if(checkEmail == true)
-                    {
-                    
-                  ViewBag.Message=$"Email {user.emailID} is already in use. Try with different Email-Id ";
+                var checkUsername = _context.Users.Any(u => u.userName == user.userName);
+                if(checkUsername == true)
+                {
+                    ViewBag.userName=$"User name {user.userName} already in exist.Try with different User name.";
                     return View();
                 }
                 else
                 {
-                    _context.Add(user);
-                    _context.SaveChanges();
-                    return RedirectToAction(nameof(Index));
+                    var checkEmail = _context.Users.Any(x => x.emailID== user.emailID);
+                    if (checkEmail == true)
+                    {
+
+                        ViewBag.Message=$"Email {user.emailID} is already in use.Try with different Email-Id.";
+                        return View();
+                    }
+                    else
+                    {
+                        _context.Add(user);
+                        _context.SaveChanges();
+                        return RedirectToAction(nameof(Index));
+                    }
                 }
             }
             catch (Exception Ex)
@@ -116,18 +125,27 @@ namespace LoanManagementSystem.Controllers
         {
             try
             {
-                var checkEmail = _context.Users.Any(x => x.emailID== user.emailID);
-                if (checkEmail == true)
+                var checkUsername = _context.Users.Any(u => u.userName == user.userName);
+                if (checkUsername == true)
                 {
-                    ViewBag.Message=$"Email{user.emailID} is already in use.Try with different Email-Id ";
+                    ViewBag.userName=$"User name {user.userName} already in exist.Try with different User name.";
                     return View();
                 }
                 else
-                { 
-                    _context.Update(user);
-                    _context.SaveChanges();
-                    return RedirectToAction(nameof(Index));
-                   
+                {
+                    var checkEmail = _context.Users.Any(x => x.emailID== user.emailID);
+                    if (checkEmail == true)
+                    {
+                        ViewBag.Message=$"Email{user.emailID} is already in use.Try with different Email-Id.";
+                        return View();
+                    }
+                    else
+                    {
+                        _context.Update(user);
+                        _context.SaveChanges();
+                        return RedirectToAction(nameof(Index));
+
+                    }
                 }
             }
             catch (Exception Ex)
@@ -135,6 +153,7 @@ namespace LoanManagementSystem.Controllers
                 return View(Ex.Message);
             }
         }
+
         // Delete User by Id
         public IActionResult Delete(int? id)
         {
@@ -147,8 +166,6 @@ namespace LoanManagementSystem.Controllers
             {
                 return View(Ex.Message);
             }
-           
-
         }
 
         // dELETE User by Id
@@ -170,12 +187,7 @@ namespace LoanManagementSystem.Controllers
             {
                 return View(Ex.Message);
             }
-           
         }
-
-       
     }
-
-   
 }
 
