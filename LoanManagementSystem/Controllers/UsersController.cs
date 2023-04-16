@@ -15,6 +15,7 @@ using X.PagedList;
 
 namespace LoanManagementSystem.Controllers
 {
+    [Authorize]
     public class UsersController : Controller
     {
         private readonly Context _context;
@@ -25,16 +26,29 @@ namespace LoanManagementSystem.Controllers
         }
 
         //  Users index
-        public IActionResult Index(int? page)
+        public IActionResult Index(int? page /*string searchUsername*/)
         {
             try
             {
+                //Pagination
                 var pageNumber = page ?? 1;
                 int pageSize = 4;
-                var onePageofUsers = _context.Users.ToPagedList(pageNumber, pageSize);
+                var onePageofUsers =  _context.Users.ToPagedList(pageNumber, pageSize);
+                
+                // Search 
+                //ViewData["SearchByUsername"]=searchUsername;
+                //if (!string.IsNullOrEmpty(searchUsername))
+                //{
+                //    var checkUN =  _context.Users.Where(m => m.userName.Contains(searchUsername)).ToList();
+                //    return View(checkUN);
+
+                //}
+
                 //var context = _context.Users.ToList();
                 //return View(context);
-                return View(onePageofUsers);
+                return  View(onePageofUsers);
+
+                
 
             }
             catch (Exception Ex)
@@ -44,7 +58,23 @@ namespace LoanManagementSystem.Controllers
 
         }
 
-
+        //[HttpGet]
+        //public IActionResult Index(string searchUsername)
+        //{
+        //    ViewData["SearchByUsername"]=searchUsername;
+        //    if (!string.IsNullOrEmpty(searchUsername))
+        //    {
+        //        var checkUN = _context.Users.Where(m => m.userName.Contains(searchUsername)).ToList();
+        //        return View(checkUN);
+        //    }
+        //    return RedirectToAction("Index");
+            
+        //    //else
+        //    //{
+        //    //    ViewBag.searchError=$"User with {searchUsername} is not present in the list. Kindly check with valid user name.";
+        //    //    return View();
+        //    //}
+        //}
 
         //  Users Create page
         public IActionResult Create()
